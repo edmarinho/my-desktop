@@ -1,0 +1,10 @@
+---
+- name: PIP - Instalar packages
+  pip:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - boto
+    - boto3
+    - botocore
+    - awscli
