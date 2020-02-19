@@ -1,4 +1,10 @@
 ---
+- name: Packages - Install
+  package:
+    name:
+    - vim
+    state: present
+
 - name: PIP - Instalar packages
   pip:
     name: "{{ packages }}"
@@ -8,3 +14,23 @@
     - boto3
     - botocore
     - awscli
+
+- name: Create a directory to repositóries
+  file:
+    path: /home/edoliveira/repositories
+    state: directory
+
+- name: Install VSCode
+  apt:
+    deb: "{{ role_path }}/files/code_1.42.1-1581432938_amd64.deb"
+
+- name: VSCode - Install Extension
+  shell: |
+    code --install-extension vscoss.vscode-ansible --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension ms-python.python --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension ms-azuretools.vscode-docker --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension mauve.terraform --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension vscoss.vscode-ansible --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension secanis.jenkinsfile-support --user-data-dir /home/edoliveira/.vscode/
+    code --install-extension mhutchie.git-graph --user-data-dir /home/edoliveira/.vscode/

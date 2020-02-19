@@ -2,7 +2,10 @@
 - hosts: ungrouped
   become: yes
   pre_tasks:
-  - name: 'Instalando o Python'
-    raw: 'apt-get -y install python'
+  - name: 'Instalando o packages'
+    package:
+      name:
+      - python
+      - python-pip
   roles:
   - my-desktop
